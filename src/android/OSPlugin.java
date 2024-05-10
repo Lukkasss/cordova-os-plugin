@@ -14,7 +14,7 @@ public class OSPlugin extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("showToast")) {
+        if (action.equals("coolMethod")) {
             this.coolMethod("Hello World", callbackContext);
             return true;
         }
