@@ -27,7 +27,7 @@ public class OSPlugin extends CordovaPlugin {
                 public void run() {
                     Toast.makeText(cordova.getActivity(), message, 15).show();
                 }
-            })
+            });
             callbackContext.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
