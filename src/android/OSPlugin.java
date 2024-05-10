@@ -15,10 +15,7 @@ public class OSPlugin extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("showToast")) {
-            String message = args.getString(0);
-            int duration = args.getInt(1);
-            showToast(message, duration);
-            callbackContext.success();
+            this.coolMethod("Hello World", callbackContext);
             return true;
         }
         return false;
@@ -26,6 +23,11 @@ public class OSPlugin extends CordovaPlugin {
 
     private void coolMethod(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
+            cordova.getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    Toast.makeText(cordova.getActivity(), message, 15).show();
+                }
+            })
             callbackContext.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
